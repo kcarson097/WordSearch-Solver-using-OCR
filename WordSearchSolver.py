@@ -14,8 +14,8 @@ class App():
     AN OPTION TO SOLVE THE ENTIRE PUZZLE AND A DROPDOWN TO SOLVE FOR A SINGLE WORD IN THE BANK"""
     def __init__(self,master):
         #convert worsearch to text file (a split list of each line) and convert wordbank
-        self.wordsearch = self.convert_image_to_text('wordsearch1.png')
-        self.word_bank = self.convert_image_to_text('wordbank1.png')
+        self.wordsearch = self.convert_image_to_text('wordSearch2.png')
+        self.word_bank = self.convert_image_to_text('wordBank2.png')
         #self.word_bank = ['BLUEBERRY']
         
         #welcomelabel
@@ -52,31 +52,6 @@ class App():
         self.word = self.var.get()
         self.find_word(self.word)
         
-       
-    def option_changed(self,*args):
-        """THIS FUNCTION IS CALLED WHEN USER CHANGES VARIABLE IN DROPDOWN MENU,
-        THE PROGRAM WILL FIND THIS VARIABLE IN THE PUZZLE"""
-        self.word = self.var.get()
-        self.find_word(self.word)
-        
-        
-    def solve(self):
-        """THIS SOLVES THE ENTIRE PUZZLE AND TIMES THE TIME TAKEN TO SOLVE"""
-        #start timer
-        start = time.time()
-        for self.word in self.word_bank:
-            print(self.word)
-            self.find_word(self.word)
-            #finish timer
-            end = time.time()
-            self.time_elapsed = "{:.2f}".format(end - start) + " s"
-            
-            #display time taken to solve
-            label = Label(root,text = "Puzzle Solved in " + self.time_elapsed,
-                          font = ("Helvetica", 15)).grid(row = len(self.wordsearch)+3,column = 0, 
-                                                         columnspan = len(self.wordsearch[0]))
-            
-            
     def convert_image_to_text(self,path):
         """USING PYTESSERACT, THE WORDBANK AND WORDSEARCH IMAGES ARE CONVERTED TO TEXT
         THEY ARE SPLIT INTO LISTS I.E FOR THE WORDSEARCH ONE LARGE LIST AND WITHIN THIS LIST EACH ROW IS PRESENT
@@ -95,7 +70,31 @@ class App():
         text = pytesseract.image_to_string(im, lang = "eng")
 
 
-        return text.split()
+        return text.split()  
+        
+    def solve(self):
+        """THIS SOLVES THE ENTIRE PUZZLE AND TIMES THE TIME TAKEN TO SOLVE"""
+        #start timer
+        start = time.time()
+        for self.word in self.word_bank:
+            #print(self.word)
+            self.find_word(self.word)
+            #finish timer
+            end = time.time()
+            self.time_elapsed = "{:.2f}".format(end - start) + " s"
+            
+            #display time taken to solve
+            label = Label(root,text = "Puzzle Solved in " + self.time_elapsed,
+                          font = ("Helvetica", 15)).grid(row = len(self.wordsearch)+3,column = 0, 
+                                                         columnspan = len(self.wordsearch[0]))
+            
+    def option_changed(self,*args):
+        """THIS FUNCTION IS CALLED WHEN USER CHANGES VARIABLE IN DROPDOWN MENU,
+        THE PROGRAM WILL FIND THIS VARIABLE IN THE PUZZLE"""
+        self.word = self.var.get()
+        self.find_word(self.word)
+        
+            
     
     def find_word(self,word):
         """USING THE INPUTED WORD,THIS CHECKS EACH CHARACTER IN THE WORDSEARCH AND SEES
