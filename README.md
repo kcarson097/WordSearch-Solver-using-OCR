@@ -3,4 +3,4 @@ This is a word search puzzle solver which takes in an image of a wordsearch and 
 
 When using, I reccomend you use the provided wordsearches in this repositry - you will have to change the preprocessing of the image to get an accurate OCR for new images - this current code is refinded for the attached wordsearches but the pre processing can be easily altered using the openCV library and pytesseract. OCR accuracy is normally imporved by increasing the resolution of the image, ensuring there is small spacing between each character in the wordsearch and changing the image to grey. If typing the worsearch yourself, Calibri is the best text to use with expanded spacing between the characters.
 
-Images of the example window that will be shown is attached.
+Images of the example window that will be shown are attached.
