@@ -14,8 +14,8 @@ class App():
     AN OPTION TO SOLVE THE ENTIRE PUZZLE AND A DROPDOWN TO SOLVE FOR A SINGLE WORD IN THE BANK"""
     def __init__(self,master):
         #convert worsearch to text file (a split list of each line) and convert wordbank
-        self.wordsearch = self.convert_image_to_text('wordSearch2.png')
-        self.word_bank = self.convert_image_to_text('wordBank2.png')
+        self.wordsearch = self.convert_image_to_text('wordSearch1.png')
+        self.word_bank = self.convert_image_to_text('wordBank1.png')
         #self.word_bank = ['BLUEBERRY']
         
         #welcomelabel
